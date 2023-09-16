@@ -1,8 +1,7 @@
 //********** import para executar o código conforme modificações da lista01.2.1-GRASP-refactoring
-import locadora.Cliente;
-import locadora.Aluguel;
-import locadora.DVD;
-import locadora.TipoExtrato;
+import locadora.*;
+
+import java.util.Scanner;
 //********** import para executar o código conforme modificações da lista01.2.2-GRASP-refactoring
 //import refactoring1.Cliente;
 //************************************************************************************************
@@ -23,6 +22,18 @@ public class Locadora {
 		c1.adicionaAluguel(new Aluguel(new DVD("Moana", DVD.INFANTIL), 10));
 		c1.adicionaAluguel(new Aluguel(new DVD("Uma Noite no Museu", DVD.NORMAL), 3));
 
-		System.out.println(c1.extrato(TipoExtrato.SHELL.ordinal()));
+		System.out.println("Extrato SHELL: 0" );
+		System.out.println("Extrato HTML: 1" );
+		System.out.print("Infome o tipo de extrato: ");
+		Scanner sc = new Scanner(System.in);
+		int tipoExtrato = sc.nextInt();
+		sc.close();
+
+
+		ExtratoTemplate extrato = FabricaSimplesExtrato.getExtrato(tipoExtrato);
+
+		System.out.println(extrato.templateExtrato(c1));
+
+
 	}
 }

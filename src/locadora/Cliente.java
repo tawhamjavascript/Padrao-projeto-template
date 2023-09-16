@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Cliente {
     private String nome;
-    private List<Aluguel> dvdsAlugados = new ArrayList<Aluguel>();
+    private List<Aluguel> itensAlugados = new ArrayList<Aluguel>();
 
     public Cliente(String nome) {
         this.nome = nome;
@@ -17,16 +17,16 @@ public class Cliente {
     }
 
     public void adicionaAluguel(Aluguel aluguel) {
-        dvdsAlugados.add(aluguel);
+        itensAlugados.add(aluguel);
     }
 
-    public Iterator<Aluguel> getDvdsAlugados() {
-        return dvdsAlugados.iterator();
+    public Iterator<Aluguel> getItensAlugados() {
+        return itensAlugados.iterator();
     }
 
     public double getValorTotal() {
         double valorTotal = 0.0;
-        Iterator<Aluguel> alugueis = dvdsAlugados.iterator();
+        Iterator<Aluguel> alugueis = itensAlugados.iterator();
         while (alugueis.hasNext()) {
             Aluguel cada = alugueis.next();
             valorTotal += cada.valorDeUmAluguel();
@@ -36,7 +36,7 @@ public class Cliente {
 
     public int getPontosTotaisDeAlugadorFrequente() {
         int pontosDeAlugadorFrequente = 0;
-        Iterator<Aluguel> alugueis = dvdsAlugados.iterator();
+        Iterator<Aluguel> alugueis = itensAlugados.iterator();
         while (alugueis.hasNext()) {
             Aluguel cada = alugueis.next();
             pontosDeAlugadorFrequente += cada.calcularPontosDeAlugadorFrequente();
@@ -45,8 +45,4 @@ public class Cliente {
         return pontosDeAlugadorFrequente;
     }
 
-    public String extrato(int tipoExtrato) {
-        return FabricaSimplesExtrato.getExtrato(tipoExtrato).templateExtrato(this);
-
-    }
 }

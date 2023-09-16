@@ -1,16 +1,16 @@
 package locadora;
 
 public class Aluguel {
-	   private Alugavel dvd;
+	   private Alugavel alugavel;
 	   private int diasAlugado;
 	 
-	   public Aluguel(DVD dvd, int diasAlugado) {
-	      this.dvd = dvd;
+	   public Aluguel(Alugavel alugavel, int diasAlugado) {
+	      this.alugavel = alugavel;
 	      this.diasAlugado = diasAlugado;
 	   }
 	 
-	   public Alugavel getDVD() {
-	      return dvd;
+	   public Alugavel getAlugavel() {
+	      return alugavel;
 	   }
 	 
 	   public int getDiasAlugado() {
@@ -18,11 +18,11 @@ public class Aluguel {
 	   }
 
 	public double valorDeUmAluguel() {
-		   return dvd.valorDeUmAluguel(diasAlugado);
+		   return alugavel.valorDeUmAluguel(diasAlugado);
 
 	}
 
 	public int calcularPontosDeAlugadorFrequente() {
-		return dvd.calcularPontosDeAlugadorFrequente(diasAlugado);
+		return alugavel.calcularPontosDeAlugadorFrequente(diasAlugado);
 	}
 }

@@ -1,25 +1,21 @@
 package locadora;
 
 
-import java.util.Iterator;
-
 public class ExtratoShell extends ExtratoTemplate {
-    private Cliente cliente;
-    @Override
-    public String montarExtrato(Iterator<Aluguel> alugueis, String fimDeLinha, Cliente cliente) {
-        String resultado = "Registro de Alugueis de " + cliente.getNome() + fimDeLinha;
 
-        while (alugueis.hasNext()) {
-            Aluguel cada = alugueis.next();
-            // mostra valores para este aluguel
-            resultado += "\t" + cada.getDVD().getTítulo() + "\t R$ " + cada.valorDeUmAluguel() + fimDeLinha;
+    protected String cabecalho(Cliente cliente, String fimDeLinha) {
+        return "Registro de Alugueis de " +
+                cliente.getNome() + fimDeLinha;
+    }
 
-        }
-        resultado += "Valor total pago: R$ " +  cliente.getValorTotal() + fimDeLinha;
-        resultado += "Voce acumulou " + cliente.getPontosTotaisDeAlugadorFrequente() +
+    protected String corpo(Aluguel aluguel, String fimDeLinha) {
+        return "\t" + aluguel.getAlugavel().getTítulo() + "\t R$ " +
+                aluguel.valorDeUmAluguel() + fimDeLinha;
+    }
+
+    protected String rodape(Cliente cliente, String fimDeLinha) {
+        return "Valor total pago: R$ " + cliente.getValorTotal() +
+                fimDeLinha + "Voce acumulou " + cliente.getPontosTotaisDeAlugadorFrequente() +
                 " pontos de alugador frequente";
-
-        return resultado;
-
     }
 }

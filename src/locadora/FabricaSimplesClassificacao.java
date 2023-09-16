@@ -6,12 +6,12 @@ public class FabricaSimplesClassificacao {
 
     public static Classificacao getClassificacao(int codigo){
         switch(codigo){
-            case 0:
+            case DVD.NORMAL:
                 return new ClassificacaoNormal();
-            case 1:
+            case DVD.LANÇAMENTO:
                 return new ClassificacaoLancamento();
 
-            case 2:
+            case DVD.INFANTIL:
                 return new ClassificacaoInfantil();
 
             default:

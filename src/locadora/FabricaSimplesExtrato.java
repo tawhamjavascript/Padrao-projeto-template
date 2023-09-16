@@ -1,17 +1,17 @@
 package locadora;
 
+
 public class FabricaSimplesExtrato {
 
+    static TipoExtrato tipoExtrato;
     private FabricaSimplesExtrato(){};
 
     public static ExtratoTemplate getExtrato(int tipo){
-        switch(tipo){
-            case 0:
-                return new ExtratoShell();
-            case 1:
-                return new ExtratoHTML();
-            default:
-                return null;
+        if (tipo == TipoExtrato.SHELL.getTipo()){
+            return new ExtratoShell();
+        } else if (tipo == TipoExtrato.HTML.getTipo()){
+            return new ExtratoHTML();
         }
+        return null;
     }
 }
